@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% block content %}
+{% load humanize %}
+
+<body>
+	<main>
+		<div class="docchuong">
+			<div class="container">
+				<div class="top">
+					<h3 style="width: 100%;"><a href="/truyen_id={{truyen.id}}/" class="chevron-left"
+							style="color:black; margin-right:10px;" href="#"><span
+								style="color:#0a58ca">{{truyen.ten}}</span></a></h3>
+				</div>
+				<div class="tenchuong">
+					<h2>Chương {{chap.stt}}: {{chap.ten}}</h2>
+				</div>
+				<div class="tenchuong">
+					<h4>Truyện được tải lên và dịch bởi <a href="/truyencuanhomdich/ten={{nhomdich.ten}}/"
+							style="text-transform: uppercase;">{{nhomdich.ten}}</a></h4>
+				</div>
+				{% for x in alltrang %}
+				<div class="anh" style="width: 100%;">
+					<img src="{{x.anh.url}}" alt="không thể tải">
+				</div>
+				{% endfor %}
+				<div class="chapter-control">
+					<a href="/home/" class="home"><i class="fa-solid fa-house"></i></a>
+					{% if chaptruoc == allchuong|last %}
+					<a class="button-lf" style="background: #333; color:#ccc	!important"><i
+							class="fa-solid fa-angle-left"></i></a>
+					{% else %}
+					<a href="/truyen_id={{truyen.id}}/chuong={{chaptruoc.id}}/" class="button-lf"><i
+							class="fa-solid fa-angle-left"></i></a>
+					{% endif %}
+					<select class="select-chapter" onchange="navigateTo(this)">
+						{% for chuong in allchuong %}
+						{% if chuong == chap %}
+						<option value="/truyen_id={{truyen.id}}/chuong={{chuong.id}}/" selected>Chapter {{chuong.stt}}
+						</option>
+						{% else %}
+						<option value="/truyen_id={{truyen.id}}/chuong={{chuong.id}}/">Chapter {{chuong.stt}}</option>
+						{% endif %}
+						{% endfor %}
+					</select>
+					{% if chapsau != 'none' %}
+					<a href="/truyen_id={{truyen.id}}/chuong={{chapsau.id}}/" class="button-lf"><i
+							class="fa-solid fa-angle-right"></i></a>
+					{% else %}
+					<a class="button-lf" style="background: #333; color:#ccc	!important"><i
+							class="fa-solid fa-angle-right"></i></a>
+					{% endif %}
+					<a href="#" class="button-lf"><i class="fa-solid fa-angle-up"></i></a>
+				</div>
+
+			</div>
+		</div>
+
+
+	</main>
+	<!-- FOOTER -->
+	{% include "footer.html" %}
+	<!-- END FOOTER -->
+	<script>
+		function navigateTo(select) {
+			const url = select.value; // Lấy giá trị của option được chọn
+			if (url) { // Nếu có giá trị (khác rỗng)
+				window.location.href = url; // Điều hướng đến URL
+			}
+		}
+	</script>
+</body>
+
+{% endblock %}

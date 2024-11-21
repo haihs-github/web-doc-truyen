@@ -1,0 +1,247 @@
+/* new update */
+
+#new-update {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+#new-update .inner-title {
+	text-transform: uppercase;
+	font-size: 30px;
+	margin-bottom: 45px;
+}
+
+#new-update a {
+	overflow: hidden;
+
+}
+
+#new-update a img {
+	width: 100%;
+	height: 80%;
+	border-radius: 8px;
+}
+
+#new-update a img:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#new-update .row .col-lg-2 {
+	max-width: 100%;
+	margin-bottom: 30px;
+}
+
+#new-update .inner-name h3 {
+	margin: 0;
+	margin-top: 8px;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	--tw-text-opacity: 1;
+	color: rgb(31 41 55 / var(--tw-text-opacity));
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	/* Số dòng hiển thị */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#new-update .inner-name .inner-chap {
+	margin: 0;
+	font-size: 0.8rem;
+	line-height: 1.25rem;
+	--tw-text-opacity: 1;
+	color: rgb(31 41 55 / var(--tw-text-opacity));
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	/* Số dòng hiển thị */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.inner-nextpage {
+	display: flex;
+	align-items: center;
+	float: right;
+
+	margin-bottom: 15px;
+}
+
+.inner-nextpage span {
+	padding-left: 5px;
+}
+
+/* end new update */
+/*main*/
+body {
+	background-color: #D1D4DD;
+}
+
+#truyentheodoi {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+
+	color: #4D535E;
+}
+
+#truyentheodoi .inner-title {
+	text-transform: uppercase;
+	font-size: 30px;
+	margin-bottom: 45px;
+}
+
+#truyentheodoi a {
+	overflow: hidden;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 20px;
+	font-size: 20px;
+	font-weight: 50px;
+	color: rgb(0, 0, 0);
+	background-color: #999a9d;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.button i {
+	margin-right: 8px;
+	margin-left: 8px;
+}
+
+.button:hover {
+	color: rgb(0, 0, 0);
+	background-color: #7d7e7f;
+}
+
+#truyentheodoi a img {
+	width: 100%;
+	height: 200px;
+	border-radius: 8px;
+}
+
+#truyentheodoi a img:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#truyentheodoi .row .col-lg-2 {
+	max-width: 100%;
+	margin-bottom: 30px;
+}
+
+#truyentheodoi .inner-name h3 {
+	margin: 0;
+	margin-top: 8px;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	--tw-text-opacity: 1;
+	color: rgb(31 41 55 / var(--tw-text-opacity));
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	/* Số dòng hiển thị */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#truyentheodoi .inner-name .inner-chap {
+	margin: 0;
+	font-size: 0.8rem;
+	line-height: 1.25rem;
+	--tw-text-opacity: 1;
+	color: rgb(31 41 55 / var(--tw-text-opacity));
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	/* Số dòng hiển thị */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.inner-nextpage {
+	display: flex;
+	align-items: center;
+	float: right;
+	margin-bottom: 15px;
+}
+
+.inner-nextpage span {
+	padding-left: 5px;
+}
+
+.delete-icon {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+
+	color: white;
+	border-radius: 50%;
+
+	font-size: 9px;
+	padding: 6px;
+	cursor: pointer;
+}
+
+.btndelete {
+	background-color: #bd2d23;
+	/* Màu nền đỏ */
+	border-radius: 50%;
+	border: 2px solid rgb(232, 227, 227);
+	color: white;
+	/* Màu chữ trắng */
+	padding: 5px 7px;
+	/* Khoảng cách bên trong */
+	padding-top: 6px;
+	font-size: 9px;
+	/* Kích thước chữ */
+	cursor: pointer;
+	/* Con trỏ chuột khi hover */
+}
+
+.btndelete:hover {
+	background-color: #d32f2f;
+	/* Màu nền khi hover */
+}
+
+/* FOOTER */
+
+
+.footer {
+	--tw-bg-opacity: 1;
+	background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	border-top-width: 2px;
+
+}
+
+.footer .inner-text {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.footer .inner-text .inner-contact {
+	color: rgb(186 246 207);
+}
+
+.footer .inner-text .inner-member {
+	color: white;
+}
+
+.footer .inner-text a {
+	color: white;
+}
+
+
+/* END FOOTER */

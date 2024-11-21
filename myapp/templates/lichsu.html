@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+{% load humanize %}
+
+<main>
+	<section id="truyentheodoi">
+		<div class="container">
+			<h1 class="font-bold">
+				Lịch sử đọc truyện
+			</h1>
+			<form class=" date-form" method="post">
+				{% csrf_token %}
+				<label for="start-date"> Duyệt theo ngày theo ngày:</label><br>
+				<span>từ: </span><input type="date" id="start-date" name="start-date" class="date-picker" required>
+				<label for="end-date">đến:</label>
+				<input type="date" id="end-date" name="end-date" class="date-picker" required>
+				<button type="submit" name="btn-loc-ngay" style="background-color:gray; color:white;">lọc</button>
+			</form>
+			{% for date in lichsu_theo_ngay %}
+			<h2 class="font-bold" style="margin: 10px 0">
+				Ngày {{date.0.thoigiandoc|date:'d/m/Y'}}
+			</h2>
+			<div class="inner-list my-0">
+				<div class="row">
+					{% for x in date %}
+					<div class="col-lg-2 col-md-3 col-sm-4 col-6">
+						<div class="image-container">
+							<a href="/truyen_id={{x.idtruyen}}/chuong={{x.idchap}}/">
+								<img class="hover-shadow" style="width:170px; height:250px;" src="{{x.anhbia.url}}"
+									alt="x.tentruyen" loading="lazy" width="320" height="480">
+							</a>
+							<div class="inner-name">
+								<a href="/truyen_id={{x.idtruyen}}/chuong={{x.idchap}}/">
+									<h3>{{x.tentruyen}}
+									</h3>
+								</a>
+								<a href="/truyen_id={{x.idtruyen}}/chuong={{x.idchap}}/">
+									<h3 class="inner-chap">
+										Chap: {{x.stt}}
+									</h3>
+								</a>
+							</div>
+							<form class="delete-icon" method="post">
+								{% csrf_token %}
+								<input type="text" name="id_ls_xoa" value="{{x.id}}" hidden>
+								<button class="btndelete" type="submit" name="btn-delete"><i
+										class="fa-solid fa-trash"></i></button>
+							</form>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+
+			</div>
+			<br>
+			{% endfor %}
+		</div>
+	</section>
+
+
+</main>
+
+<!-- FOOTER -->
+{% include "footer.html" %}
+<!-- END FOOTER -->
+
+
+<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+{% block content %}
+{% load humanize %}
+
+<body>
+	<main>
+		<div class="docchuong">
+			<form class="container" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="top">
+					<h3 style="width: 100%;"><a href="/truyen_id={{truyen.id}}/" class="chevron-left"
+							style="color:black; margin-right:10px;" href="#"><span
+								style="color:#0a58ca">{{truyen.ten}}</span></a></h3>
+				</div>
+				<div class="tenchuong">
+					<h2>Chương {{chap.stt}}: {{chap.ten}}</h2>
+				</div>
+				<div class="tenchuong">
+					<h4>Truyện được tải lên và dịch bởi <a href="/truyencuanhomdich/ten={{nhomdich.ten}}/"
+							style="text-transform: uppercase;">{{nguoidung.ten}}</a></h4>
+				</div>
+				{% for x in alltrang %}
+				<div class="anh">
+					<img src="data:image/jpeg;base64,{{x}}" alt="không thể tải" style="border: red 2px solid">
+					<input type="hidden" name="alltrang[]" value="{{ x }}">
+				</div>
+				{% endfor %}
+				<div class="lastbtn">
+					<div class="btn">
+						<p style="color:red;">(Sự lẫn lộn của thứ tự trang có thể do sự xắp sếp file trong thư mục khi
+							tải, nếu có lỗi
+							hãy chọn sửa lại và sắp xếp lại thư mục)</p>
+					</div>
+				</div>
+				<div class="chapter-control">
+					<button class="btn btn-danger" onclick="window.history.back(); return false;">Thoát chế độ xem
+						trước</button>
+				</div>
+			</form>
+		</div>
+	</main>
+	<!-- FOOTER -->
+	{% include "footer.html" %}
+	<!-- END FOOTER -->
+
+
+	<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+
+</body>
+
+{% endblock %}

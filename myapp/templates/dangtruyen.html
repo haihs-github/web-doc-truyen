@@ -1,0 +1,122 @@
+{% extends "index.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+{% load humanize %}
+
+<main>
+	<div class="suatruyen" style="padding-bottom:100px;">
+		<div class="trencung">
+			<div class="container">
+				<div class="left">
+					<a class="chevron-left" href="#" onclick="window.history.back(); return false;"><i
+							class="fas fa-chevron-left"></i></a>
+					<div class="tieude">
+						<p>Thêm Thông Tin Truyện</p>
+						<h5>Truyện Chưa Có Tiêu Đề</h5>
+					</div>
+				</div>
+
+				<div class="right">
+					<a href="/dangtruyen/" class="buttonhuy">Hủy</a>
+				</div>
+			</div>
+		</div>
+		<div class="chinhsua">
+			<div class="container">
+				<form class="row" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="backgranh">
+							<div class="anh">
+								<div class="custom-file-upload"
+									onclick="document.getElementById('image_input1').click()">
+									<i class="fa-regular fa-image"></i>
+									<br>
+									Chọn ảnh bìa
+									<input type="file" id="image_input1" name="anhbia" accept="image/*"
+										onchange="displayImage(event, 'uploaded_image1')">
+								</div>
+								<img id="uploaded_image1" class="uploaded_image" src="#" alt="Uploaded Image 1">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+						<div class="backgranh">
+							<div class="anh">
+								<div class="custom-file-upload"
+									onclick="document.getElementById('image_input2').click()">
+									<i class="fa-regular fa-image"></i>
+									<br>
+									Chọn ảnh nền
+									<input type="file" id="image_input2" name="anhnen" accept="image/*"
+										onchange="displayImage(event, 'uploaded_image2')">
+								</div>
+								<img id="uploaded_image2" class="uploaded_image" src="#" alt="Uploaded Image 2">
+							</div>
+
+						</div>
+
+					</div>
+					<div class="col-lg-8 col-md-12 col-sm-12 col-12" style="margin-left: auto;margin-right: auto;">
+						<div class="chitiettruyen">
+							<h5>Chi Tiết Truyện</h5>
+						</div>
+
+						<div class="content">
+							<h6>Tiêu đề</h6>
+							<input type="text" name="ten" placeholder="Truyện chưa có tiêu đề">
+							<h6>Mô tả</h6>
+							<textarea id="paragraph" name="mota" class="paragraph-input1" placeholder="Nhập mô tả"
+								style='height:200px ;width:100%;'></textarea>
+							<h6>Tác giả</h6>
+							<input class="tacgia" type="text" name="tacgia" placeholder="Name">
+							<h6>Thể loại</h6>
+							<div class="category-dropdown">
+								<div class="category-dropdown-toggle" onclick="toggleDropdown()">Chọn thể loại</div>
+								<div class="category-dropdown-menu">
+									{% for x in list_the_loais %}
+									<label><input class="input" type="checkbox" name="theloais" value="{{x.theloai}}"
+											onclick="event.stopPropagation()"> {{x.theloai}} </label>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div style="display: flex; justify-content: center;">
+							<button type="submit" class="submit btn-primary" value="Đăng truyện" name="btn-dangtruyen"
+								style="background-color:blue; padding:7px 10px;">Đăng truyện</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{% include "footer.html" %}
+</main>
+
+<script>
+	function toggleDropdown() {
+		document.querySelector('.category-dropdown-menu').classList.toggle('show');
+	}
+
+	document.addEventListener('click', function (event) {
+		if (!event.target.matches('.category-dropdown-toggle') && !event.target.closest('.category-dropdown-menu')) {
+			document.querySelector('.category-dropdown-menu').classList.remove('show');
+		}
+	});
+	document.querySelector('.custom-file-upload').addEventListener('click', function () {
+		document.querySelector('#image_input').click();
+	});
+
+	function displayImage(event, imgElementId) {
+		const image = document.getElementById(imgElementId);
+		image.src = URL.createObjectURL(event.target.files[0]);
+		image.style.display = 'block';
+		image.onload = function () {
+			URL.revokeObjectURL(image.src);
+		}
+	}
+</script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+{% load humanize %}
+
+<!-- MAIN -->
+<main>
+    <section class="inner-login">
+        <div class="container-2">
+            <!-- REGISTER -->
+            <div class="registration form">
+                <header>Đăng nhập</header>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Tên đăng nhập" name="ten" required>
+                    <input type="password" placeholder="Mật khẩu" name="matkhau" required>
+                    {% if login_failed == True %}
+                    <p style="color:red;">(tên hoặc tài khoản không đúng)</p>
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary" style="width: 100%">Đăng nhập</button>
+                </form>
+                <div class="signup">
+                    <span class="signup">Bạn chưa có tài khoản?
+                        <a class="label" href="/register/">Đăng ký</a>
+                    </span>
+                </div>
+            </div>
+            <!-- END REGISTER -->
+        </div>
+
+    </section>
+</main>
+<!-- END MAIN -->
+
+
+<!-- FOOTER -->
+{% include "footer.html" %}
+<!-- END FOOTER -->
+{% endblock %}
